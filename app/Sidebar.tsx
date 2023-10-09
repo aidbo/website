@@ -13,9 +13,9 @@ import { Link, useTranslations } from 'next-intl'
 import { usePathname } from 'next-intl/client'
 import NextLink from 'next/link'
 import React from 'react'
-import { BsGithub, BsYoutube } from 'react-icons/bs'
+import { BsGithub, BsWechat } from 'react-icons/bs'
+import { SiBilibili } from 'react-icons/si'
 import {
-  TbBriefcase,
   TbCarouselHorizontal,
   TbMail,
   TbMailbox,
@@ -25,7 +25,7 @@ import {
 const links = [
   { href: '/', label: 'Home', icon: TbPlanet },
   { href: '/about', label: 'About', icon: LogoHelmet },
-  { href: '/careers', label: 'Careers', icon: TbBriefcase },
+  // { href: '/careers', label: 'Careers', icon: TbBriefcase },
   { href: '/portfolios', label: 'Portfolios', icon: TbCarouselHorizontal },
   // { href: '/services', label: 'Services', icon: TbAugmentedReality2 },
   { href: '/contact', label: 'Contact', icon: TbMailbox },
@@ -33,23 +33,28 @@ const links = [
 ]
 const social = [
   {
+    name: 'WeChat',
+    url: 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzk0MDQ5ODUyMQ==&scene=124#wechat_redirect',
+    icon: BsWechat,
+  },
+  {
     name: 'Twitter',
-    url: 'https://twitter.com/zolplay',
+    url: 'https://twitter.com/AidboStudio',
     icon: BrandXIcon,
   },
   {
     name: 'GitHub',
-    url: 'https://github.com/zolplay-cn',
+    url: 'https://github.com/aidbo',
     icon: BsGithub,
   },
   {
-    name: 'YouTube',
-    url: 'https://youtube.com/@zolplay',
-    icon: BsYoutube,
+    name: 'Bilibili',
+    url: 'https://space.bilibili.com/10767968',
+    icon: SiBilibili,
   },
   {
     name: 'Email',
-    url: 'mailto:contact@zolplay.com',
+    url: 'mailto:contact@aidbo.fun',
     icon: TbMail,
   },
 ]
@@ -76,7 +81,7 @@ export function Sidebar({ className }: { className?: string }) {
               damping: 30,
             }}
           >
-            <Logo className="w-7 md:w-10" />
+            <Logo className="w-10 md:w-16" />
           </motion.span>
         </Link>
 

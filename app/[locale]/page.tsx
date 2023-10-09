@@ -2,8 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import OfficeShot from './zolplay-office-couch-shot.jpg'
-import Poster from './zolplay-poster.png'
+import Fuwu from './aidbo-fuwu.png'
 
 export default function Home() {
   const t = useTranslations('Home')
@@ -12,8 +11,12 @@ export default function Home() {
     <>
       <h1>👋&nbsp;{t('Heading')}</h1>
       <p>{t.rich('Paragraph1')}</p>
-      <Image src={Poster} alt="Zolplay Poster" placeholder="blur" />
-      <Image src={OfficeShot} alt="Zolplay Office Shot" placeholder="blur" />
+      <a
+        href="https://fuwu.weixin.qq.com/profile/sq_oWTzf6t7Vrzf099ONaqXS5vMc0L4"
+        target="_blank"
+      >
+        <Image src={Fuwu} alt="Aidbo Fuwu" placeholder="blur" />
+      </a>
       <p className="-mt-4 text-center text-sm text-stone-400 dark:text-stone-500">
         {t('Caption')}
       </p>

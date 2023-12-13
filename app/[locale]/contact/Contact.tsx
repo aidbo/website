@@ -17,33 +17,6 @@ const contactFormSchema = z.object({
 export type ContactFormSchema = z.infer<typeof contactFormSchema>
 export function Contact() {
   const t = useTranslations('Contact')
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    reset,
-  } = useForm<ContactFormSchema>({
-    resolver: zodResolver(contactFormSchema),
-  })
-  const onSubmit = React.useCallback(
-    async (data) => {
-      try {
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          body: JSON.stringify({ data }),
-        })
-        if (response.ok) {
-          toast.success(t('Form.Submit.Success'), { duration: 5000 })
-          reset()
-        } else {
-          toast.error(t('Form.Submit.Error'))
-        }
-      } catch (error) {
-        toast.error(t('Form.Submit.Error'))
-      }
-    },
-    [t, reset]
-  )
 
   return (
     <>
@@ -51,7 +24,7 @@ export function Contact() {
 
       <p>{t('Description')}</p>
 
-      <Form.Root submitting={isSubmitting} onSubmit={handleSubmit(onSubmit)}>
+      <Form.Root>
         <Form.Container>
           <header>
             <p className="flex flex-col text-sm tracking-tight text-stone-500 md:flex-row md:items-center">
@@ -70,45 +43,9 @@ export function Contact() {
               })}
             </p>
           </header>
-
-          <Form.Section>
-            <Form.FieldGroup name="name">
-              <Form.Label>{t('Form.FullName.Label')}</Form.Label>
-              <Form.Input
-                placeholder={t('Form.FullName.Placeholder')}
-                {...register('name')}
-              />
-              <Form.Error message={errors.name?.message} />
-            </Form.FieldGroup>
-            <Form.FieldGroup name="email">
-              <Form.Label>{t('Form.Email.Label')}</Form.Label>
-              <Form.Input
-                type="email"
-                autoComplete="on"
-                placeholder={t('Form.Email.Placeholder')}
-                {...register('email')}
-              />
-              <Form.Error message={errors.email?.message} />
-            </Form.FieldGroup>
-
-            <Form.FieldGroup name="message" size="lg">
-              <Form.Label>{t('Form.Message.Label')}</Form.Label>
-              <Form.TextArea
-                defaultValue=""
-                rows={3}
-                placeholder={t('Form.Message.Placeholder')}
-                {...register('message')}
-              />
-              <Form.Error message={errors.message?.message} />
-            </Form.FieldGroup>
-          </Form.Section>
         </Form.Container>
 
-        <Form.Footer>
-          <Form.SubmitButton>
-            {t(isSubmitting ? 'Form.Submit.Sending' : 'Form.Submit.Idle')}
-          </Form.SubmitButton>
-        </Form.Footer>
+        <Form.Footer></Form.Footer>
       </Form.Root>
     </>
   )
